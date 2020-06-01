@@ -9,81 +9,183 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/main_page_bg.png'),
-            alignment: Alignment.topCenter,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: RichText(
-                text: TextSpan(
-                  style: Theme.of(context).textTheme.headline5,
-                  children: [
-                    TextSpan(
-                      text: 'What are you \nreading',
-                    ),
-                    TextSpan(
-                      text: ' today?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/main_page_bg.png'),
+                  alignment: Alignment.topCenter,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
-            ),
-            SizedBox(height: 30),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  ReadingListCard(
-                    image: 'assets/book-1.png',
-                    title: 'Crushing & Influence',
-                    author: 'Gary Venchuk',
-                    rating: 4.8,
-                  ),
-                  ReadingListCard(
-                    image: 'assets/book-2.png',
-                    title: 'Top Ten Business Hacks',
-                    author: 'Herman Joel',
-                    rating: 4.7,
-                  ),
-                  SizedBox(width: 30),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                      style: Theme.of(context).textTheme.headline5,
-                      children: [
-                        TextSpan(text: 'Best of the '),
-                        TextSpan(
-                          text: 'day',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                  SizedBox(
+                    height: size.height * 0.1,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.headline5,
+                        children: [
+                          TextSpan(
+                            text: 'What are you \nreading',
                           ),
+                          TextSpan(
+                            text: ' today?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        ReadingListCard(
+                          image: 'assets/book-1.png',
+                          title: 'Crushing & Influence',
+                          author: 'Gary Venchuk',
+                          rating: 4.8,
                         ),
+                        ReadingListCard(
+                          image: 'assets/book-2.png',
+                          title: 'Top Ten Business Hacks',
+                          author: 'Herman Joel',
+                          rating: 4.7,
+                        ),
+                        SizedBox(width: 30),
                       ],
                     ),
                   ),
-                  bestOfTheDayCard(size, context),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        RichText(
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.headline5,
+                            children: [
+                              TextSpan(text: 'Best of the '),
+                              TextSpan(
+                                text: 'day',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        bestOfTheDayCard(size, context),
+                        RichText(
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.headline5,
+                            children: [
+                              TextSpan(text: 'Continue '),
+                              TextSpan(
+                                text: 'reading...',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          height: 80,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(38.5),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(0, 10),
+                                blurRadius: 33,
+                                color: Color(0xFFD3D3D3).withOpacity(0.84),
+                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(38.5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 30.0,
+                                      right: 20.0,
+                                    ),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Crushing & Influence',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Gary Venchuk',
+                                                style: TextStyle(
+                                                  color: kLightBlackColor,
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment:
+                                                    Alignment.bottomRight,
+                                                child: Text(
+                                                  'Chapter 7 of 10',
+                                                  style: TextStyle(
+                                                    fontSize: 10,
+                                                    color: kLightBlackColor,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(height: 5),
+                                            ],
+                                          ),
+                                        ),
+                                        Image.asset(
+                                          'assets/book-1.png',
+                                          width: 55,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 7,
+                                  width: size.width * 0.65,
+                                  decoration: BoxDecoration(
+                                    color: kProgressIndicator,
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 40),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
